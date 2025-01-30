@@ -1,5 +1,9 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { IconHome, IconMessage, IconUser } from "@tabler/icons-react";
+import { FloatingNav } from "@/components/ui/floating-navbar";
+import { ThemeProvider } from "@/components/theme-provider";
+import { ScrollProgress } from "@/components/ui/scroll-progress";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,12 +21,45 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const navItems = [
+    {
+      name: "Asosiy",
+      link: "#home",
+      icon: <IconHome className="h-4 w-4 text-neutral-500 dark:text-white" />,
+    },
+    {
+      name: "Xizmatlar",
+      link: "#services",
+      icon: <IconUser className="h-4 w-4 text-neutral-500 dark:text-white" />,
+    },
+    {
+      name: "Biz haqimizda",
+      link: "#about",
+      icon: <IconUser className="h-4 w-4 text-neutral-500 dark:text-white" />,
+    },
+    {
+      name: "Contact",
+      link: "#contact",
+      icon: (
+        <IconMessage className="h-4 w-4 text-neutral-500 dark:text-white" />
+      ),
+    },
+  ];
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <ScrollProgress className="top-0" />
+          <FloatingNav navItems={navItems} />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
