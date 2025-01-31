@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
+import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 import { TextAnimate } from "@/components/ui/text-animate";
 
 export function AboutUs() {
@@ -41,6 +42,39 @@ export function AboutUs() {
       src: "https://images.unsplash.com/photo-1624561172888-ac93c696e10c?q=80&w=2592&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
   ];
+
+  const testimonials1 = [
+    {
+      quote:
+        "It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness, it was the epoch of belief, it was the epoch of incredulity, it was the season of Light, it was the season of Darkness, it was the spring of hope, it was the winter of despair.",
+      name: "Charles Dickens",
+      title: "A Tale of Two Cities",
+    },
+    {
+      quote:
+        "To be, or not to be, that is the question: Whether 'tis nobler in the mind to suffer The slings and arrows of outrageous fortune, Or to take Arms against a Sea of troubles, And by opposing end them: to die, to sleep.",
+      name: "William Shakespeare",
+      title: "Hamlet",
+    },
+    {
+      quote: "All that we see or seem is but a dream within a dream.",
+      name: "Edgar Allan Poe",
+      title: "A Dream Within a Dream",
+    },
+    {
+      quote:
+        "It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.",
+      name: "Jane Austen",
+      title: "Pride and Prejudice",
+    },
+    {
+      quote:
+        "Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world.",
+      name: "Herman Melville",
+      title: "Moby-Dick",
+    },
+  ];
+
   return (
     <main id="about" className="min-h-screen space-y-5">
       <section className="flex justify-center items-center">
@@ -52,7 +86,14 @@ export function AboutUs() {
           Bizning haqimizda
         </TextAnimate>
       </section>
-      <AnimatedTestimonials testimonials={testimonials} />;
+      <AnimatedTestimonials testimonials={testimonials} />
+      <section className="w-full flex justify-center items-center">
+        <InfiniteMovingCards
+          items={testimonials1}
+          direction="right"
+          speed="slow"
+        />
+      </section>
     </main>
   );
 }
